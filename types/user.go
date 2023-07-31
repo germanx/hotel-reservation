@@ -16,6 +16,15 @@ const (
 	minPasswordLen  = 7
 )
 
+type User struct {
+	ID                primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
+	FirstName         string             `bson:"firstName" json:"firstName"`
+	LastName          string             `bson:"lastName" json:"lastName"`
+	Email             string             `bson:"email" json:"email"`
+	EncryptedPassword string             `bson:"EncryptedPassword" json:"-"`
+	IsAdmin           bool               `bson:"isAdmin" json:"isAdmin"`
+}
+
 type CreateUserParams struct {
 	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
@@ -60,18 +69,9 @@ func (params CreateUserParams) Validate() map[string]string {
 		errors["password"] = fmt.Sprintf("password len should be at least %d characters", minPasswordLen)
 	}
 	if !isEmailValid(params.Email) {
-		errors["email"] = fmt.Sprintf("email is invalid: %v", params.Email)
+		errors["email"] = fmt.Sprintf("email is invalid: %s", params.Email)
 	}
 	return errors
-}
-
-// User
-type User struct {
-	ID                primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
-	FirstName         string             `bson:"firstName" json:"firstName"`
-	LastName          string             `bson:"lastName" json:"lastName"`
-	Email             string             `bson:"email" json:"email"`
-	EncryptedPassword string             `bson:"EncryptedPassword" json:"-"`
 }
 
 func NewUserFromParams(params CreateUserParams) (*User, error) {

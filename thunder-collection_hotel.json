@@ -1,0 +1,333 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "hotel",
+    "dateExported": "2023-07-31T09:36:23.953Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "312ef161-8d99-434a-aef6-0eb05ca4ed19",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "auth",
+            "url": "http://localhost:5000/api/auth",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-07-26T05:53:31.907Z",
+            "modified": "2023-07-26T05:55:15.572Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "x-api-token",
+                    "value": "drerdfggjfghkjl346jfhjdjfhj"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"james@foo.com\",\n  \"password\": \"1234567\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fb857b0f-6acc-4d4d-b6b8-7cea0ff0392f",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "auth admin",
+            "url": "http://localhost:5000/api/auth",
+            "method": "POST",
+            "sortNum": 12500,
+            "created": "2023-07-31T09:23:56.330Z",
+            "modified": "2023-07-31T09:24:20.194Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "x-api-token",
+                    "value": "drerdfggjfghkjl346jfhjdjfhj"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"admin@admin.com\",\n  \"password\": \"1234567\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1506f6c9-e906-4b71-b80c-3b1764a25260",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "users get",
+            "url": "http://localhost:5000/api/v1/users",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-07-20T13:47:08.956Z",
+            "modified": "2023-07-21T05:52:03.988Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3134fd15-a43e-451a-83ad-13f98e6573f3",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "user add",
+            "url": "http://localhost:5000/api/v1/user",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-07-20T13:45:41.901Z",
+            "modified": "2023-07-20T18:02:03.764Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"firstName\": \"Mike\",\n  \"lastName\": \"Petit\",\n  \"email\": \"Mike@james-com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5045b31f-fce7-4dbc-8246-13b6dbe88874",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "user get",
+            "url": "http://localhost:5000/api/v1/user/64b6aa0f8ac5f56bdc4cbdd0",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-07-20T13:51:21.184Z",
+            "modified": "2023-07-21T05:31:07.309Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d728dd71-ebfa-467c-bfc9-4bde01037b08",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "user update",
+            "url": "http://localhost:5000/api/v1/user/64b93644f960b712462e4fcd",
+            "method": "PUT",
+            "sortNum": 55000,
+            "created": "2023-07-21T05:52:26.845Z",
+            "modified": "2023-07-21T06:49:34.651Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"firstName\": \"Maarerten\",\n  \"lastName\": \"Watercooler\",\n  \"email\": \"foo@james.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bc67a774-2bbd-4989-a44c-ec3c97ef9232",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "user delete",
+            "url": "http://localhost:5000/api/v1/user/64b6aa0f8ac5f56bdc4cbdd0",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-07-20T18:19:49.094Z",
+            "modified": "2023-07-20T18:21:54.765Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e6a816da-fcb7-4435-8d03-fa722c8763c8",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "bookings",
+            "url": "http://localhost:5000/api/v1/admin/bookings",
+            "method": "GET",
+            "sortNum": 75000,
+            "created": "2023-07-31T05:53:32.113Z",
+            "modified": "2023-07-31T09:24:54.139Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "X-Api-Token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImV4cGlyZXMiOjE2OTA4MDk4ODMsImlkIjoiNjRjNzdhZjE1NmRlMmExYWExOTQxZDU5In0.zWLiXtkSPJkJZxZuUXT7tGDdTftQT-ntEysDBF-QDlA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1261f6bc-501f-4e6e-9237-dbca2b32cccf",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "booking get",
+            "url": "http://localhost:5000/api/v1/booking/64c77c5671ca9568e06a8296",
+            "method": "GET",
+            "sortNum": 76250,
+            "created": "2023-07-31T06:04:49.067Z",
+            "modified": "2023-07-31T09:20:11.814Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "X-Api-Token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphbWVzQGZvby5jb20iLCJleHBpcmVzIjoxNjkwODA5Mzg3LCJpZCI6IjY0Yzc3YWYwNTZkZTJhMWFhMTk0MWQ1OCJ9.VkUhHIOyG9-ahA_sYKlTI-6o1FEFJXZ4cChFKeqAwSw"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4a940ea7-29e3-4404-b4f9-81a63cec0835",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "booking add",
+            "url": "http://localhost:5000/api/v1/room/64c77af056de2a1aa1941d4d/book",
+            "method": "POST",
+            "sortNum": 77500,
+            "created": "2023-07-29T08:04:30.014Z",
+            "modified": "2023-07-31T09:21:41.137Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "X-Api-Token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphbWVzQGZvby5jb20iLCJleHBpcmVzIjoxNjkwODA5Mzg3LCJpZCI6IjY0Yzc3YWYwNTZkZTJhMWFhMTk0MWQ1OCJ9.VkUhHIOyG9-ahA_sYKlTI-6o1FEFJXZ4cChFKeqAwSw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"numPersons\": 2,\n  \"fromDate\": \"2023-09-27T00:00:00.0Z\",\n  \"tillDate\": \"2023-09-29T00:00:00.0Z\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a0b897fe-2663-4216-bbcb-34534ad3d6fe",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "hotels",
+            "url": "http://localhost:5000/api/v1/hotels",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-07-25T12:11:48.849Z",
+            "modified": "2023-07-31T09:17:01.514Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "X-Api-Token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphbWVzQGZvby5jb20iLCJleHBpcmVzIjoxNjkwODA5Mzg3LCJpZCI6IjY0Yzc3YWYwNTZkZTJhMWFhMTk0MWQ1OCJ9.VkUhHIOyG9-ahA_sYKlTI-6o1FEFJXZ4cChFKeqAwSw"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "47e49061-0cc4-4394-9ccf-9f5b6d6d0347",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "hotel details",
+            "url": "http://localhost:5000/api/v1/hotel/64bfc00f2cd685f6d57bad78",
+            "method": "GET",
+            "sortNum": 85000,
+            "created": "2023-07-25T14:17:46.414Z",
+            "modified": "2023-07-25T14:19:13.743Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "158536e8-d813-4f0e-be64-add4cfbffa98",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "hotel rooms",
+            "url": "http://localhost:5000/api/v1/hotel/64bfc00f2cd685f6d57bad78/rooms",
+            "method": "GET",
+            "sortNum": 86250,
+            "created": "2023-07-25T12:15:40.346Z",
+            "modified": "2023-07-25T12:29:31.693Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "40307764-4691-45e9-bdf5-73a2efa9ecf8",
+            "colId": "234631be-ecc2-4d81-aa8e-3bb660a4eb21",
+            "containerId": "",
+            "name": "rooms",
+            "url": "http://localhost:5000/api/v1/rooms",
+            "method": "GET",
+            "sortNum": 97500,
+            "created": "2023-07-30T15:01:59.416Z",
+            "modified": "2023-07-31T06:33:16.904Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "X-Api-Token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphbWVzQGZvby5jb20iLCJleHBpcmVzIjoxNjkwNzk3Mjg1LCJpZCI6IjY0YzRjNzI4NDZhYTM5ZjE4Yjk3ZmEzOSJ9.-f0SkH-OZlaoefR_aayJ8Np2ng-2RRi1RBCbUU4-U1w"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"numPersons\": 2,\n  \"fromDate\": \"2023-09-20T00:00:00.0Z\",\n  \"tillDate\": \"2023-09-21T00:00:00.0Z\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
