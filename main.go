@@ -6,8 +6,8 @@ import (
 	"log"
 
 	"github.com/germanx/hotel-reservation/api"
+	"github.com/germanx/hotel-reservation/api/middleware"
 	"github.com/germanx/hotel-reservation/db"
-	"github.com/germanx/hotel-reservation/middleware"
 	"github.com/gofiber/fiber/v2"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -20,10 +20,6 @@ var config = fiber.Config{
 }
 
 func main() {
-	// now := time.Now()
-	// fmt.Println(now)
-	// return
-
 	listenAddr := flag.String("listenAddr", ":5000", "The listen address of the API server")
 	flag.Parse()
 
@@ -78,6 +74,7 @@ func main() {
 
 	// bookings
 	apiV1.Get("/booking/:id", bookingHandler.HandleGetBooking)
+	apiV1.Get("/booking/:id/cancel", bookingHandler.HandleCancelBookings)
 
 	// admin handlers
 	admin.Get("/bookings", bookingHandler.HandleGetBookings)
