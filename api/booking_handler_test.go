@@ -9,7 +9,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/germanx/hotel-reservation/api/middleware"
 	"github.com/germanx/hotel-reservation/db/fixtures"
 	"github.com/germanx/hotel-reservation/types"
 	"github.com/gofiber/fiber/v2"
@@ -31,8 +30,8 @@ func TestAdminGetBookings(t *testing.T) {
 
 		booking = fixtures.AddBooking(db.Store, user.ID, room.ID, from, till)
 
-		app            = fiber.New()
-		admin          = app.Group("/", middleware.JWTAuthentication(db.User), middleware.AdminAuth)
+		app            = fiber.New(fiber.Config{ErrorHandler: ErrorHandler})
+		admin          = app.Group("/", JWTAuthentication(db.User), AdminAuth)
 		bookingHandler = NewBookingHandler(db.Store)
 	)
 	// _ = booking
@@ -67,8 +66,8 @@ func TestAdminGetBookings(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if resp.StatusCode == http.StatusOK {
-		t.Fatalf("expected a non 200 response got: %d", resp.StatusCode)
+	if resp.StatusCode != http.StatusUnauthorized {
+		t.Fatalf("expected status unauthorized but got: %d", resp.StatusCode)
 	}
 }
 
@@ -89,7 +88,7 @@ func TestUserGetBooking(t *testing.T) {
 		booking = fixtures.AddBooking(db.Store, user.ID, room.ID, from, till)
 
 		app            = fiber.New()
-		route          = app.Group("/", middleware.JWTAuthentication(db.User))
+		route          = app.Group("/", JWTAuthentication(db.User))
 		bookingHandler = NewBookingHandler(db.Store)
 	)
 
