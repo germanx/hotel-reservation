@@ -30,10 +30,10 @@ func main() {
 
 	var (
 		// handler initialization
-		hotelStore   = db.NewMongoHotelStore(client)
-		roomStore    = db.NewMongoRoomStore(client, hotelStore)
-		userStore    = db.NewMongoUserStore(client)
-		bookingStore = db.NewMongoBookingStore(client)
+		hotelStore   = db.NewMongoHotelStore(client, db.DB_NAME)
+		roomStore    = db.NewMongoRoomStore(client, hotelStore, db.DB_NAME)
+		userStore    = db.NewMongoUserStore(client, db.DB_NAME)
+		bookingStore = db.NewMongoBookingStore(client, db.DB_NAME)
 		store        = &db.Store{
 			Hotel:   hotelStore,
 			Room:    roomStore,

@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -10,41 +9,23 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/germanx/hotel-reservation/db"
-	"github.com/germanx/hotel-reservation/types"
+	"github.com/germanx/hotel-reservation/db/fixtures"
 	"github.com/gofiber/fiber/v2"
 )
-
-func insertTestUser(t *testing.T, userStore db.UserStore) *types.User {
-	user, err := types.NewUserFromParams(types.CreateUserParams{
-		Email:     "james@foo.com",
-		FirstName: "james",
-		LastName:  "foo",
-		Password:  "1234567",
-	})
-	if err != nil {
-		t.Fatal(err)
-	}
-	_, err = userStore.InsertUser(context.TODO(), user)
-	if err != nil {
-		t.Fatal(err)
-	}
-	return user
-}
 
 func TestAuthenticateSuccess(t *testing.T) {
 	tdb := setup(t)
 	defer tdb.teardown(t)
 
-	user := insertTestUser(t, tdb.UserStore)
+	insertedUser := fixtures.AddUser(tdb.Store, "james", "foo", false)
 
 	app := fiber.New()
-	authHandler := NewAuthHandler(tdb.UserStore)
+	authHandler := NewAuthHandler(tdb.User)
 	app.Post("/auth", authHandler.HandleAuthenticate)
 
 	params := AuthParams{
 		Email:    "james@foo.com",
-		Password: "1234567",
+		Password: "james_foo",
 	}
 
 	b, _ := json.Marshal(params)
@@ -68,9 +49,9 @@ func TestAuthenticateSuccess(t *testing.T) {
 		t.Fatal("expected JWT to be present")
 	}
 
-	user.EncryptedPassword = "" // we don't return password
-	if !reflect.DeepEqual(user, authResp.User) {
-		fmt.Println(user)
+	insertedUser.EncryptedPassword = "" // we don't return password
+	if !reflect.DeepEqual(insertedUser, authResp.User) {
+		fmt.Println(insertedUser)
 		fmt.Println(authResp.User)
 		t.Fatal("expected the user to be the inserted user")
 	}
@@ -80,8 +61,10 @@ func TestAuthenticateWithWrongPassword(t *testing.T) {
 	tdb := setup(t)
 	defer tdb.teardown(t)
 
+	// fixtures.AddUser(tdb.Store, "james", "foo", false)
+
 	app := fiber.New()
-	authHandler := NewAuthHandler(tdb.UserStore)
+	authHandler := NewAuthHandler(tdb.User)
 	app.Post("/auth", authHandler.HandleAuthenticate)
 
 	params := AuthParams{

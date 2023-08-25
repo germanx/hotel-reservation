@@ -34,10 +34,10 @@ type MongoUserStore struct {
 
 // type PostgresUserStore struct{}
 
-func NewMongoUserStore(client *mongo.Client) *MongoUserStore {
+func NewMongoUserStore(client *mongo.Client, dbName string) *MongoUserStore {
 	return &MongoUserStore{
 		client: client,
-		coll:   client.Database(DBNAME).Collection(userColl),
+		coll:   client.Database(dbName).Collection(userColl),
 	}
 }
 

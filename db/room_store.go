@@ -21,10 +21,10 @@ type MongoRoomStore struct {
 	HotelStore
 }
 
-func NewMongoRoomStore(client *mongo.Client, hotelStore HotelStore) *MongoRoomStore {
+func NewMongoRoomStore(client *mongo.Client, hotelStore HotelStore, dbName string) *MongoRoomStore {
 	return &MongoRoomStore{
 		client:     client,
-		coll:       client.Database(DBNAME).Collection("rooms"),
+		coll:       client.Database(dbName).Collection("rooms"),
 		HotelStore: hotelStore,
 	}
 }
